@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/user.js';
-
+import crypto from 'crypto';
 const registerUser = async (req, res) => {
   const { userName, email, password } = req.body;
 
@@ -35,7 +35,7 @@ const loginUser = async (req, res) => {
     }
 
     const randomString = crypto.randomUUID();
-    const apiKey = `mern-$${user._id}-$${email}-$${randomString}`;
+    const apiKey = `mern-$${user._id}$-$${email}$-$${randomString}$`;
 
     user.apiKey = apiKey;
     await user.save();
